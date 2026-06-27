@@ -1,0 +1,351 @@
+/*@!Encoding:1252*/
+includes
+{
+  #include "Comms_Fault_Lib.cin"
+  #include "Diag_Lib.cin"
+  #include "Global_Variables.cin"
+  #include "Comm_Lib.cin"
+}
+
+testcase signal_range_PHY_test_ECU_EngineData_Engine_RPM()
+{
+  // Signal Name - "ECU_EngineData::Engine_RPM"
+  // Factor: 0.25 ; Offset: 0
+  // Raw min: 0 ; Raw max: 32000
+  // ['32001']: INVLD value
+  // Interface type: PHY
+  // Interface Name: "sysvar::Comm::RTE_ECU_EngineData_Engine_RPM"
+  long input_values[8] = {0, 1, 15999, 16000, 16001, 31999, 32000, 32001};
+  float expected_values[8] = {0.0, 0.25, 3999.75, 4000.0, 4000.25, 7999.75, 8000.0, 8000.0};
+  Check_signal_value_float_type("ECU_EngineData::Engine_RPM", sysvar::Comm::RTE_ECU_EngineData_Engine_RPM, input_values, expected_values);
+}
+
+testcase Signal_ECU_EngineData_Engine_RPM_Invalid_Test()
+{
+  // Signal Name - "ECU_EngineData::Engine_RPM"
+  // Factor: 0.25 ; Offset: 0
+  // Raw min: 0 ; Raw max: 32000
+  // ['32001']: INVLD value
+  // Fault type - "SIGNAL"
+  // debounce time - 4120 ms
+  // recovery time - 2120 ms
+  // DTC number - 0XFFFFFF
+  check_signal_fault("ECU_EngineData::Engine_RPM", "SIGNAL", 32001, 32000, 4120, 2120, 0XFFFFFF);
+}
+
+testcase signal_range_RAW_test_ECU_EngineData_Engine_Temp()
+{
+  // Signal Name - "ECU_EngineData::Engine_Temp"
+  // Factor: 1 ; Offset: -40 
+  // Raw min: 0 ; Raw max: 255
+  // []: INVLD value
+  // Interface type: RAW
+  // Interface Name: "sysvar::Comm::RTE_ECU_EngineData_Engine_Temp"
+  long input_values[7] = {0, 1, 126, 127, 128, 254, 255};
+  long expected_values[7] = {-40, -39, 86, 87, 88, 214, 215};
+  Check_signal_value_long_type("ECU_EngineData::Engine_Temp", sysvar::Comm::RTE_ECU_EngineData_Engine_Temp, input_values, expected_values);
+}
+
+testcase signal_range_PHY_test_ECU_EngineData_Throttle_Pos()
+{
+  // Signal Name - "ECU_EngineData::Throttle_Pos"
+  // Factor: 0.4 ; Offset: 0
+  // Raw min: 0 ; Raw max: 250
+  // ['251']: INVLD value
+  // Interface type: PHY
+  // Interface Name: "sysvar::Comm::RTE_ECU_EngineData_Throttle_Pos"
+  long input_values[8] = {0, 1, 124, 125, 126, 249, 250, 251};
+  float expected_values[8] = {0.0, 0.4, 49.6, 50.0, 50.400000000000006, 99.60000000000001, 100.0, 100.0};
+  Check_signal_value_float_type("ECU_EngineData::Throttle_Pos", sysvar::Comm::RTE_ECU_EngineData_Throttle_Pos, input_values, expected_values);
+}
+
+testcase Signal_ECU_EngineData_Throttle_Pos_Invalid_Test()
+{
+  // Signal Name - "ECU_EngineData::Throttle_Pos"
+  // Factor: 0.4 ; Offset: 0
+  // Raw min: 0 ; Raw max: 250
+  // ['251']: INVLD value
+  // Fault type - "SIGNAL"
+  // debounce time - 4120 ms
+  // recovery time - 2120 ms
+  // DTC number - 0XFFFFFF
+  check_signal_fault("ECU_EngineData::Throttle_Pos", "SIGNAL", 251, 250, 4120, 2120, 0XFFFFFF);
+}
+
+testcase signal_range_PHY_test_BMS_BatteryState_Pack_Voltage()
+{
+  // Signal Name - "BMS_BatteryState::Pack_Voltage"
+  // Factor: 0.1 ; Offset: 0
+  // Raw min: 0 ; Raw max: 10000
+  // ['10001']: INVLD value
+  // Interface type: PHY
+  // Interface Name: "sysvar::Comm::RTE_BMS_BatteryState_Pack_Voltage"
+  long input_values[8] = {0, 1, 4999, 5000, 5001, 9999, 10000, 10001};
+  float expected_values[8] = {0.0, 0.1, 499.90000000000003, 500.0, 500.1, 999.9000000000001, 1000.0, 1000.0};
+  Check_signal_value_float_type("BMS_BatteryState::Pack_Voltage", sysvar::Comm::RTE_BMS_BatteryState_Pack_Voltage, input_values, expected_values);
+}
+
+testcase Signal_BMS_BatteryState_Pack_Voltage_Invalid_Test()
+{
+  // Signal Name - "BMS_BatteryState::Pack_Voltage"
+  // Factor: 0.1 ; Offset: 0
+  // Raw min: 0 ; Raw max: 10000
+  // ['10001']: INVLD value
+  // Fault type - "SIGNAL"
+  // debounce time - 4120 ms
+  // recovery time - 2120 ms
+  // DTC number - 0XFFFFFF
+  check_signal_fault("BMS_BatteryState::Pack_Voltage", "SIGNAL", 10001, 10000, 4120, 2120, 0XFFFFFF);
+}
+
+testcase signal_range_PHY_test_BMS_BatteryState_Pack_Current()
+{
+  // Signal Name - "BMS_BatteryState::Pack_Current"
+  // Factor: 0.1 ; Offset: -3200
+  // Raw min: 28800 ; Raw max: 35200
+  // ['28799', '35201']: INVLD value
+  // Interface type: PHY
+  // Interface Name: "sysvar::Comm::RTE_BMS_BatteryState_Pack_Current"
+  long input_values[9] = {28800, 28801, 31999, 32000, 32001, 35199, 35200, 28799, 35201};
+  float expected_values[9] = {-320.0, -319.89999999999964, -0.09999999999990905, 0.0, 0.1000000000003638, 319.9000000000001, 320.0, 320.0, 320.0};
+  Check_signal_value_float_type("BMS_BatteryState::Pack_Current", sysvar::Comm::RTE_BMS_BatteryState_Pack_Current, input_values, expected_values);
+}
+
+testcase Signal_BMS_BatteryState_Pack_Current_Invalid_Test()
+{
+  // Signal Name - "BMS_BatteryState::Pack_Current"
+  // Factor: 0.1 ; Offset: -3200
+  // Raw min: 28800 ; Raw max: 35200
+  // ['28799', '35201']: INVLD value
+  // Fault type - "SIGNAL"
+  // debounce time - 4120 ms
+  // recovery time - 2120 ms
+  // DTC number - 0XFFFFFF
+  check_signal_fault("BMS_BatteryState::Pack_Current", "SIGNAL", 28799, 35200, 4120, 2120, 0XFFFFFF);
+}
+
+testcase signal_range_PHY_test_BMS_BatteryState_Battery_SOC()
+{
+  // Signal Name - "BMS_BatteryState::Battery_SOC"
+  // Factor: 0.5 ; Offset: 0
+  // Raw min: 0 ; Raw max: 200
+  // ['201']: INVLD value
+  // Interface type: PHY
+  // Interface Name: "sysvar::Comm::RTE_BMS_BatteryState_Battery_SOC"
+  long input_values[8] = {0, 1, 99, 100, 101, 199, 200, 201};
+  float expected_values[8] = {0.0, 0.5, 49.5, 50.0, 50.5, 99.5, 100.0, 100.0};
+  Check_signal_value_float_type("BMS_BatteryState::Battery_SOC", sysvar::Comm::RTE_BMS_BatteryState_Battery_SOC, input_values, expected_values);
+}
+
+testcase Signal_BMS_BatteryState_Battery_SOC_Invalid_Test()
+{
+  // Signal Name - "BMS_BatteryState::Battery_SOC"
+  // Factor: 0.5 ; Offset: 0
+  // Raw min: 0 ; Raw max: 200
+  // ['201']: INVLD value
+  // Fault type - "SIGNAL"
+  // debounce time - 4120 ms
+  // recovery time - 2120 ms
+  // DTC number - 0XFFFFFF
+  check_signal_fault("BMS_BatteryState::Battery_SOC", "SIGNAL", 201, 200, 4120, 2120, 0XFFFFFF);
+}
+
+testcase signal_range_RAW_test_TCU_GearStatus_Current_Gear()
+{
+  // Signal Name - "TCU_GearStatus::Current_Gear"
+  // Factor: 1 ; Offset: 0 
+  // Raw min: 0 ; Raw max: 10
+  // ['11']: INVLD value
+  // Interface type: RAW
+  // Interface Name: "sysvar::Comm::RTE_TCU_GearStatus_Current_Gear"
+  long input_values[8] = {0, 1, 4, 5, 6, 9, 10, 11};
+  long expected_values[8] = {0, 1, 4, 5, 6, 9, 10, 10};
+  Check_signal_value_long_type("TCU_GearStatus::Current_Gear", sysvar::Comm::RTE_TCU_GearStatus_Current_Gear, input_values, expected_values);
+}
+
+testcase Signal_TCU_GearStatus_Current_Gear_Invalid_Test()
+{
+  // Signal Name - "TCU_GearStatus::Current_Gear"
+  // Factor: 1 ; Offset: 0
+  // Raw min: 0 ; Raw max: 10
+  // ['11']: INVLD value
+  // Fault type - "SIGNAL"
+  // debounce time - 4120 ms
+  // recovery time - 2120 ms
+  // DTC number - 0XFFFFFF
+  check_signal_fault("TCU_GearStatus::Current_Gear", "SIGNAL", 11, 10, 4120, 2120, 0XFFFFFF);
+}
+
+testcase signal_range_RAW_test_TCU_GearStatus_Transmission_Temp()
+{
+  // Signal Name - "TCU_GearStatus::Transmission_Temp"
+  // Factor: 1 ; Offset: -40 
+  // Raw min: 0 ; Raw max: 255
+  // []: INVLD value
+  // Interface type: RAW
+  // Interface Name: "sysvar::Comm::RTE_TCU_GearStatus_Transmission_Temp"
+  long input_values[7] = {0, 1, 126, 127, 128, 254, 255};
+  long expected_values[7] = {-40, -39, 86, 87, 88, 214, 215};
+  Check_signal_value_long_type("TCU_GearStatus::Transmission_Temp", sysvar::Comm::RTE_TCU_GearStatus_Transmission_Temp, input_values, expected_values);
+}
+
+testcase ECU_EngineData_TIMEOUT_test()
+{
+  // PDU Name - "ECU_EngineData"
+  // Fault type - "TIMEOUT"
+  // debounce time - 4120 ms
+  // recovery time - 2120 ms
+  // DTC Number - 0xFFFFFF
+  check_message_fault("ECU_EngineData", "TIMEOUT", 4120, 2120, 0xFFFFFF);
+}
+
+testcase ECU_EngineData_E2E_CRC_test()
+{
+  // PDU Name - "ECU_EngineData"
+  // Fault type - "E2E_CRC"
+  // debounce time - 4120 ms
+  // recovery time - 2120 ms
+  // DTC Number - 0xFFFFFF
+  check_message_fault("ECU_EngineData", "E2E_CRC", 4120, 2120, 0xFFFFFF);
+}
+
+testcase ECU_EngineData_E2E_SQC_test()
+{
+  // PDU Name - "ECU_EngineData"
+  // Fault type - "E2E_SQC"
+  // debounce time - 4120 ms
+  // recovery time - 2120 ms
+  // DTC Number - 0xFFFFFF
+  check_message_fault("ECU_EngineData", "E2E_SQC", 4120, 2120, 0xFFFFFF);
+}
+
+testcase ECU_EngineData_E2E_DLC_test()
+{
+  // PDU Name - "ECU_EngineData"
+  // Fault type - "E2E_DLC"
+  // debounce time - 4120 ms
+  // recovery time - 2120 ms
+  // DTC Number - 0xFFFFFF
+  check_message_fault("ECU_EngineData", "E2E_DLC", 4120, 2120, 0xFFFFFF);
+}
+
+testcase BMS_BatteryState_TIMEOUT_test()
+{
+  // PDU Name - "BMS_BatteryState"
+  // Fault type - "TIMEOUT"
+  // debounce time - 4120 ms
+  // recovery time - 2120 ms
+  // DTC Number - 0xFFFFFF
+  check_message_fault("BMS_BatteryState", "TIMEOUT", 4120, 2120, 0xFFFFFF);
+}
+
+testcase BMS_BatteryState_E2E_CRC_test()
+{
+  // PDU Name - "BMS_BatteryState"
+  // Fault type - "E2E_CRC"
+  // debounce time - 4120 ms
+  // recovery time - 2120 ms
+  // DTC Number - 0xFFFFFF
+  check_message_fault("BMS_BatteryState", "E2E_CRC", 4120, 2120, 0xFFFFFF);
+}
+
+testcase BMS_BatteryState_E2E_SQC_test()
+{
+  // PDU Name - "BMS_BatteryState"
+  // Fault type - "E2E_SQC"
+  // debounce time - 4120 ms
+  // recovery time - 2120 ms
+  // DTC Number - 0xFFFFFF
+  check_message_fault("BMS_BatteryState", "E2E_SQC", 4120, 2120, 0xFFFFFF);
+}
+
+testcase BMS_BatteryState_E2E_DLC_test()
+{
+  // PDU Name - "BMS_BatteryState"
+  // Fault type - "E2E_DLC"
+  // debounce time - 4120 ms
+  // recovery time - 2120 ms
+  // DTC Number - 0xFFFFFF
+  check_message_fault("BMS_BatteryState", "E2E_DLC", 4120, 2120, 0xFFFFFF);
+}
+
+testcase TCU_GearStatus_TIMEOUT_test()
+{
+  // PDU Name - "TCU_GearStatus"
+  // Fault type - "TIMEOUT"
+  // debounce time - 4120 ms
+  // recovery time - 2120 ms
+  // DTC Number - 0xFFFFFF
+  check_message_fault("TCU_GearStatus", "TIMEOUT", 4120, 2120, 0xFFFFFF);
+}
+
+testcase TCU_GearStatus_E2E_CRC_test()
+{
+  // PDU Name - "TCU_GearStatus"
+  // Fault type - "E2E_CRC"
+  // debounce time - 4120 ms
+  // recovery time - 2120 ms
+  // DTC Number - 0xFFFFFF
+  check_message_fault("TCU_GearStatus", "E2E_CRC", 4120, 2120, 0xFFFFFF);
+}
+
+testcase TCU_GearStatus_E2E_SQC_test()
+{
+  // PDU Name - "TCU_GearStatus"
+  // Fault type - "E2E_SQC"
+  // debounce time - 4120 ms
+  // recovery time - 2120 ms
+  // DTC Number - 0xFFFFFF
+  check_message_fault("TCU_GearStatus", "E2E_SQC", 4120, 2120, 0xFFFFFF);
+}
+
+testcase TCU_GearStatus_E2E_DLC_test()
+{
+  // PDU Name - "TCU_GearStatus"
+  // Fault type - "E2E_DLC"
+  // debounce time - 4120 ms
+  // recovery time - 2120 ms
+  // DTC Number - 0xFFFFFF
+  check_message_fault("TCU_GearStatus", "E2E_DLC", 4120, 2120, 0xFFFFFF);
+}
+
+testcase _GLOBAL_TIMEOUT_test()
+{
+  // PDU Name - ""
+  // Fault type - "GLOBAL_TIMEOUT"
+  // debounce time - 5020 ms
+  // recovery time - 3020 ms
+  // DTC Number - 0XFFFFFF
+  check_message_fault("", "GLOBAL_TIMEOUT", 5020, 3020, 0XFFFFFF);
+}
+
+void MainTest()
+{
+  signal_range_PHY_test_ECU_EngineData_Engine_RPM();
+  Signal_ECU_EngineData_Engine_RPM_Invalid_Test();
+  signal_range_RAW_test_ECU_EngineData_Engine_Temp();
+  signal_range_PHY_test_ECU_EngineData_Throttle_Pos();
+  Signal_ECU_EngineData_Throttle_Pos_Invalid_Test();
+  signal_range_PHY_test_BMS_BatteryState_Pack_Voltage();
+  Signal_BMS_BatteryState_Pack_Voltage_Invalid_Test();
+  signal_range_PHY_test_BMS_BatteryState_Pack_Current();
+  Signal_BMS_BatteryState_Pack_Current_Invalid_Test();
+  signal_range_PHY_test_BMS_BatteryState_Battery_SOC();
+  Signal_BMS_BatteryState_Battery_SOC_Invalid_Test();
+  signal_range_RAW_test_TCU_GearStatus_Current_Gear();
+  Signal_TCU_GearStatus_Current_Gear_Invalid_Test();
+  signal_range_RAW_test_TCU_GearStatus_Transmission_Temp();
+  ECU_EngineData_TIMEOUT_test();
+  ECU_EngineData_E2E_CRC_test();
+  ECU_EngineData_E2E_SQC_test();
+  ECU_EngineData_E2E_DLC_test();
+  BMS_BatteryState_TIMEOUT_test();
+  BMS_BatteryState_E2E_CRC_test();
+  BMS_BatteryState_E2E_SQC_test();
+  BMS_BatteryState_E2E_DLC_test();
+  TCU_GearStatus_TIMEOUT_test();
+  TCU_GearStatus_E2E_CRC_test();
+  TCU_GearStatus_E2E_SQC_test();
+  TCU_GearStatus_E2E_DLC_test();
+  _GLOBAL_TIMEOUT_test();
+}

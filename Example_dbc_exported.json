@@ -1,0 +1,760 @@
+[
+    {
+        "MessageName": "VCU_Status",
+        "MessageID": 256,
+        "Senders": [
+            "VCU"
+        ],
+        "Length": 8,
+        "CycleTime": null,
+        "Signals": [
+            {
+                "SignalName": "VCU_Heartbeat",
+                "Receivers": [
+                    "ECU",
+                    "BMS",
+                    "TCU"
+                ],
+                "StartBit": 0,
+                "Length": 8,
+                "Factor": 1,
+                "Offset": 0,
+                "Min": 0,
+                "Max": 255,
+                "RawMin": 0,
+                "RawMax": 255,
+                "Unit": null,
+                "InitialValue": 0,
+                "ByteOrder": "little_endian",
+                "Choices": null,
+                "TestCases": [
+                    {
+                        "Type": "Valid",
+                        "Raw": 0,
+                        "Expected": 0
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 1,
+                        "Expected": 1
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 126,
+                        "Expected": 126
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 127,
+                        "Expected": 127
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 128,
+                        "Expected": 128
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 254,
+                        "Expected": 254
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 255,
+                        "Expected": 255
+                    }
+                ]
+            },
+            {
+                "SignalName": "Vehicle_Speed",
+                "Receivers": [
+                    "ECU",
+                    "TCU"
+                ],
+                "StartBit": 8,
+                "Length": 16,
+                "Factor": 0.01,
+                "Offset": 0,
+                "Min": 0,
+                "Max": 250,
+                "RawMin": 0,
+                "RawMax": 25000,
+                "Unit": "km/h",
+                "InitialValue": 0.0,
+                "ByteOrder": "little_endian",
+                "Choices": null,
+                "TestCases": [
+                    {
+                        "Type": "Valid",
+                        "Raw": 0,
+                        "Expected": 0.0
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 1,
+                        "Expected": 0.01
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 12499,
+                        "Expected": 124.99000000000001
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 12500,
+                        "Expected": 125.0
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 12501,
+                        "Expected": 125.01
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 24999,
+                        "Expected": 249.99
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 25000,
+                        "Expected": 250.0
+                    },
+                    {
+                        "Type": "Invalid",
+                        "Raw": 25001,
+                        "Expected": 250.0
+                    }
+                ]
+            },
+            {
+                "SignalName": "Drive_Mode",
+                "Receivers": [
+                    "ECU",
+                    "BMS",
+                    "TCU"
+                ],
+                "StartBit": 24,
+                "Length": 4,
+                "Factor": 1,
+                "Offset": 0,
+                "Min": 0,
+                "Max": 15,
+                "RawMin": 0,
+                "RawMax": 15,
+                "Unit": null,
+                "InitialValue": 0,
+                "ByteOrder": "little_endian",
+                "Choices": {
+                    "0": "Eco",
+                    "1": "Normal",
+                    "2": "Sport",
+                    "3": "Performance"
+                },
+                "TestCases": [
+                    {
+                        "Type": "Valid",
+                        "Raw": 0,
+                        "Expected": 0
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 1,
+                        "Expected": 1
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 2,
+                        "Expected": 2
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 3,
+                        "Expected": 3
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 6,
+                        "Expected": 6
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 7,
+                        "Expected": 7
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 8,
+                        "Expected": 8
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 14,
+                        "Expected": 14
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 15,
+                        "Expected": 15
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "MessageName": "ECU_EngineData",
+        "MessageID": 512,
+        "Senders": [
+            "ECU"
+        ],
+        "Length": 8,
+        "CycleTime": null,
+        "Signals": [
+            {
+                "SignalName": "Engine_RPM",
+                "Receivers": [
+                    "VCU",
+                    "TCU"
+                ],
+                "StartBit": 0,
+                "Length": 16,
+                "Factor": 0.25,
+                "Offset": 0,
+                "Min": 0,
+                "Max": 8000,
+                "RawMin": 0,
+                "RawMax": 32000,
+                "Unit": "rpm",
+                "InitialValue": 0.0,
+                "ByteOrder": "little_endian",
+                "Choices": null,
+                "TestCases": [
+                    {
+                        "Type": "Valid",
+                        "Raw": 0,
+                        "Expected": 0.0
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 1,
+                        "Expected": 0.25
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 15999,
+                        "Expected": 3999.75
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 16000,
+                        "Expected": 4000.0
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 16001,
+                        "Expected": 4000.25
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 31999,
+                        "Expected": 7999.75
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 32000,
+                        "Expected": 8000.0
+                    },
+                    {
+                        "Type": "Invalid",
+                        "Raw": 32001,
+                        "Expected": 8000.0
+                    }
+                ]
+            },
+            {
+                "SignalName": "Engine_Temp",
+                "Receivers": [
+                    "VCU"
+                ],
+                "StartBit": 16,
+                "Length": 8,
+                "Factor": 1,
+                "Offset": -40,
+                "Min": -40,
+                "Max": 215,
+                "RawMin": 0,
+                "RawMax": 255,
+                "Unit": "C",
+                "InitialValue": -40,
+                "ByteOrder": "little_endian",
+                "Choices": null,
+                "TestCases": [
+                    {
+                        "Type": "Valid",
+                        "Raw": 0,
+                        "Expected": -40
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 1,
+                        "Expected": -39
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 126,
+                        "Expected": 86
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 127,
+                        "Expected": 87
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 128,
+                        "Expected": 88
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 254,
+                        "Expected": 214
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 255,
+                        "Expected": 215
+                    }
+                ]
+            },
+            {
+                "SignalName": "Throttle_Pos",
+                "Receivers": [
+                    "VCU"
+                ],
+                "StartBit": 24,
+                "Length": 8,
+                "Factor": 0.4,
+                "Offset": 0,
+                "Min": 0,
+                "Max": 100,
+                "RawMin": 0,
+                "RawMax": 250,
+                "Unit": "%",
+                "InitialValue": 0.0,
+                "ByteOrder": "little_endian",
+                "Choices": null,
+                "TestCases": [
+                    {
+                        "Type": "Valid",
+                        "Raw": 0,
+                        "Expected": 0.0
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 1,
+                        "Expected": 0.4
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 124,
+                        "Expected": 49.6
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 125,
+                        "Expected": 50.0
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 126,
+                        "Expected": 50.400000000000006
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 249,
+                        "Expected": 99.60000000000001
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 250,
+                        "Expected": 100.0
+                    },
+                    {
+                        "Type": "Invalid",
+                        "Raw": 251,
+                        "Expected": 100.0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "MessageName": "BMS_BatteryState",
+        "MessageID": 768,
+        "Senders": [
+            "BMS"
+        ],
+        "Length": 8,
+        "CycleTime": null,
+        "Signals": [
+            {
+                "SignalName": "Pack_Voltage",
+                "Receivers": [
+                    "VCU"
+                ],
+                "StartBit": 0,
+                "Length": 16,
+                "Factor": 0.1,
+                "Offset": 0,
+                "Min": 0,
+                "Max": 1000,
+                "RawMin": 0,
+                "RawMax": 10000,
+                "Unit": "V",
+                "InitialValue": 0.0,
+                "ByteOrder": "little_endian",
+                "Choices": null,
+                "TestCases": [
+                    {
+                        "Type": "Valid",
+                        "Raw": 0,
+                        "Expected": 0.0
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 1,
+                        "Expected": 0.1
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 4999,
+                        "Expected": 499.90000000000003
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 5000,
+                        "Expected": 500.0
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 5001,
+                        "Expected": 500.1
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 9999,
+                        "Expected": 999.9000000000001
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 10000,
+                        "Expected": 1000.0
+                    },
+                    {
+                        "Type": "Invalid",
+                        "Raw": 10001,
+                        "Expected": 1000.0
+                    }
+                ]
+            },
+            {
+                "SignalName": "Pack_Current",
+                "Receivers": [
+                    "VCU"
+                ],
+                "StartBit": 16,
+                "Length": 16,
+                "Factor": 0.1,
+                "Offset": -3200,
+                "Min": -320,
+                "Max": 320,
+                "RawMin": 28800,
+                "RawMax": 35200,
+                "Unit": "A",
+                "InitialValue": -3200.0,
+                "ByteOrder": "little_endian",
+                "Choices": null,
+                "TestCases": [
+                    {
+                        "Type": "Valid",
+                        "Raw": 28800,
+                        "Expected": -320.0
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 28801,
+                        "Expected": -319.89999999999964
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 31999,
+                        "Expected": -0.09999999999990905
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 32000,
+                        "Expected": 0.0
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 32001,
+                        "Expected": 0.1000000000003638
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 35199,
+                        "Expected": 319.9000000000001
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 35200,
+                        "Expected": 320.0
+                    },
+                    {
+                        "Type": "Invalid",
+                        "Raw": 28799,
+                        "Expected": 320.0
+                    },
+                    {
+                        "Type": "Invalid",
+                        "Raw": 35201,
+                        "Expected": 320.0
+                    }
+                ]
+            },
+            {
+                "SignalName": "Battery_SOC",
+                "Receivers": [
+                    "VCU",
+                    "ECU",
+                    "TCU"
+                ],
+                "StartBit": 32,
+                "Length": 8,
+                "Factor": 0.5,
+                "Offset": 0,
+                "Min": 0,
+                "Max": 100,
+                "RawMin": 0,
+                "RawMax": 200,
+                "Unit": "%",
+                "InitialValue": 0.0,
+                "ByteOrder": "little_endian",
+                "Choices": null,
+                "TestCases": [
+                    {
+                        "Type": "Valid",
+                        "Raw": 0,
+                        "Expected": 0.0
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 1,
+                        "Expected": 0.5
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 99,
+                        "Expected": 49.5
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 100,
+                        "Expected": 50.0
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 101,
+                        "Expected": 50.5
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 199,
+                        "Expected": 99.5
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 200,
+                        "Expected": 100.0
+                    },
+                    {
+                        "Type": "Invalid",
+                        "Raw": 201,
+                        "Expected": 100.0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "MessageName": "TCU_GearStatus",
+        "MessageID": 1024,
+        "Senders": [
+            "TCU"
+        ],
+        "Length": 4,
+        "CycleTime": null,
+        "Signals": [
+            {
+                "SignalName": "Current_Gear",
+                "Receivers": [
+                    "VCU",
+                    "ECU"
+                ],
+                "StartBit": 0,
+                "Length": 4,
+                "Factor": 1,
+                "Offset": 0,
+                "Min": 0,
+                "Max": 10,
+                "RawMin": 0,
+                "RawMax": 10,
+                "Unit": null,
+                "InitialValue": 0,
+                "ByteOrder": "little_endian",
+                "Choices": null,
+                "TestCases": [
+                    {
+                        "Type": "Valid",
+                        "Raw": 0,
+                        "Expected": 0
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 1,
+                        "Expected": 1
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 4,
+                        "Expected": 4
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 5,
+                        "Expected": 5
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 6,
+                        "Expected": 6
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 9,
+                        "Expected": 9
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 10,
+                        "Expected": 10
+                    },
+                    {
+                        "Type": "Invalid",
+                        "Raw": 11,
+                        "Expected": 10
+                    }
+                ]
+            },
+            {
+                "SignalName": "Transmission_Temp",
+                "Receivers": [
+                    "VCU"
+                ],
+                "StartBit": 8,
+                "Length": 8,
+                "Factor": 1,
+                "Offset": -40,
+                "Min": -40,
+                "Max": 215,
+                "RawMin": 0,
+                "RawMax": 255,
+                "Unit": "C",
+                "InitialValue": -40,
+                "ByteOrder": "little_endian",
+                "Choices": null,
+                "TestCases": [
+                    {
+                        "Type": "Valid",
+                        "Raw": 0,
+                        "Expected": -40
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 1,
+                        "Expected": -39
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 126,
+                        "Expected": 86
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 127,
+                        "Expected": 87
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 128,
+                        "Expected": 88
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 254,
+                        "Expected": 214
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 255,
+                        "Expected": 215
+                    }
+                ]
+            },
+            {
+                "SignalName": "Clutch_Status",
+                "Receivers": [
+                    "ECU"
+                ],
+                "StartBit": 16,
+                "Length": 2,
+                "Factor": 1,
+                "Offset": 0,
+                "Min": 0,
+                "Max": 3,
+                "RawMin": 0,
+                "RawMax": 3,
+                "Unit": null,
+                "InitialValue": 0,
+                "ByteOrder": "little_endian",
+                "Choices": {
+                    "0": "Disengaged",
+                    "1": "Engaged",
+                    "2": "Slipping",
+                    "3": "Error"
+                },
+                "TestCases": [
+                    {
+                        "Type": "Valid",
+                        "Raw": 0,
+                        "Expected": 0
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 1,
+                        "Expected": 1
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 2,
+                        "Expected": 2
+                    },
+                    {
+                        "Type": "Valid",
+                        "Raw": 3,
+                        "Expected": 3
+                    }
+                ]
+            }
+        ]
+    }
+]

@@ -1,0 +1,8 @@
+/*@!Encoding:1252*/
+includes
+{
+  #include "Comms_Fault_Lib.cin"
+  #include "Diag_Lib.cin"
+  #include "Global_Variables.cin"
+  #include "Comm_Lib.cin"
+}

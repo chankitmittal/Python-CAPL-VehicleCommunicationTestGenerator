@@ -1,0 +1,70 @@
+VERSION ""
+
+NS_ :
+    NS_DESC_
+    CM_
+    BA_DEF_
+    BA_
+    VAL_
+    CAT_DEF_
+    CAT_
+    FILTER
+    BA_DEF_DEF_
+    EV_DATA_
+    ENVVAR_DATA_
+    SGTYPE_
+    SGTYPE_VAL_
+    BA_DEF_SGTYPE_
+    BA_SGTYPE_
+    SIG_TYPE_REF_
+    VAL_TABLE_
+    SIG_GROUP_
+    SIG_VALTYPE_
+    SIGTYPE_VALTYPE_
+    BO_TX_BU_
+    BA_DEF_REL_
+    BA_REL_
+    BA_DEF_DEF_REL_
+    BU_SG_REL_
+    BU_BO_REL_
+    BU_EV_REL_
+    SIG_DATA_REF_
+    SG_MUL_VAL_
+
+BS_:
+
+BU_: VCU ECU BMS TCU
+
+
+BO_ 256 VCU_Status: 8 VCU
+ SG_ VCU_Heartbeat : 0|8@1+ (1,0) [0|255] "" ECU,BMS,TCU
+ SG_ Vehicle_Speed : 8|16@1+ (0.01,0) [0|250] "km/h" ECU,TCU
+ SG_ Drive_Mode : 24|4@1+ (1,0) [0|15] "" ECU,BMS,TCU
+
+BO_ 512 ECU_EngineData: 8 ECU
+ SG_ Engine_RPM : 0|16@1+ (0.25,0) [0|8000] "rpm" VCU,TCU
+ SG_ Engine_Temp : 16|8@1+ (1,-40) [-40|215] "C" VCU
+ SG_ Throttle_Pos : 24|8@1+ (0.4,0) [0|100] "%" VCU
+
+BO_ 768 BMS_BatteryState: 8 BMS
+ SG_ Pack_Voltage : 0|16@1+ (0.1,0) [0|1000] "V" VCU
+ SG_ Pack_Current : 16|16@1+ (0.1,-3200) [-320|320] "A" VCU
+ SG_ Battery_SOC : 32|8@1+ (0.5,0) [0|100] "%" VCU,ECU,TCU
+
+BO_ 1024 TCU_GearStatus: 4 TCU
+ SG_ Current_Gear : 0|4@1+ (1,0) [0|10] "" VCU,ECU
+ SG_ Transmission_Temp : 8|8@1+ (1,-40) [-40|215] "C" VCU
+ SG_ Clutch_Status : 16|2@1+ (1,0) [0|3] "" ECU
+
+
+CM_ BU_ VCU "Vehicle Control Unit - The master network controller";
+CM_ BU_ ECU "Engine Control Unit - Manages the internal combustion engine";
+CM_ BU_ BMS "Battery Management System - Monitors high voltage pack";
+CM_ BU_ TCU "Transmission Control Unit - Handles gear changes";
+
+CM_ BO_ 256 "Contains high-level vehicle operation state data.";
+CM_ SG_ 256 Drive_Mode "0=Eco, 1=Normal, 2=Sport, 3=Performance";
+
+
+VAL_ 256 Drive_Mode 0 "Eco" 1 "Normal" 2 "Sport" 3 "Performance" ;
+VAL_ 1024 Clutch_Status 0 "Disengaged" 1 "Engaged" 2 "Slipping" 3 "Error" ;

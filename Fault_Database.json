@@ -1,0 +1,170 @@
+[
+    {
+        "FaultType": "TIMEOUT",
+        "MessageName": "ECU_EngineData",
+        "SignalName": "",
+        "DebounceTime": 4000,
+        "RecoveryTime": 2000,
+        "DTC_Number": "0xFFFFFF"
+    },
+    {
+        "FaultType": "E2E_CRC",
+        "MessageName": "ECU_EngineData",
+        "SignalName": "",
+        "DebounceTime": 4000,
+        "RecoveryTime": 2000,
+        "DTC_Number": "0xFFFFFF"
+    },
+    {
+        "FaultType": "E2E_SQC",
+        "MessageName": "ECU_EngineData",
+        "SignalName": "",
+        "DebounceTime": 4000,
+        "RecoveryTime": 2000,
+        "DTC_Number": "0xFFFFFF"
+    },
+    {
+        "FaultType": "E2E_DLC",
+        "MessageName": "ECU_EngineData",
+        "SignalName": "",
+        "DebounceTime": 4000,
+        "RecoveryTime": 2000,
+        "DTC_Number": "0xFFFFFF"
+    },
+    {
+        "FaultType": "SIGNAL",
+        "MessageName": "ECU_EngineData",
+        "SignalName": "Engine_RPM",
+        "DebounceTime": 4000,
+        "RecoveryTime": 2000,
+        "DTC_Number": "0XFFFFFF"
+    },
+    {
+        "FaultType": "SIGNAL",
+        "MessageName": "ECU_EngineData",
+        "SignalName": "Engine_Temp",
+        "DebounceTime": 4000,
+        "RecoveryTime": 2000,
+        "DTC_Number": "0XFFFFFF"
+    },
+    {
+        "FaultType": "SIGNAL",
+        "MessageName": "ECU_EngineData",
+        "SignalName": "Throttle_Pos",
+        "DebounceTime": 4000,
+        "RecoveryTime": 2000,
+        "DTC_Number": "0XFFFFFF"
+    },
+    {
+        "FaultType": "TIMEOUT",
+        "MessageName": "BMS_BatteryState",
+        "SignalName": "",
+        "DebounceTime": 4000,
+        "RecoveryTime": 2000,
+        "DTC_Number": "0xFFFFFF"
+    },
+    {
+        "FaultType": "E2E_CRC",
+        "MessageName": "BMS_BatteryState",
+        "SignalName": "",
+        "DebounceTime": 4000,
+        "RecoveryTime": 2000,
+        "DTC_Number": "0xFFFFFF"
+    },
+    {
+        "FaultType": "E2E_SQC",
+        "MessageName": "BMS_BatteryState",
+        "SignalName": "",
+        "DebounceTime": 4000,
+        "RecoveryTime": 2000,
+        "DTC_Number": "0xFFFFFF"
+    },
+    {
+        "FaultType": "E2E_DLC",
+        "MessageName": "BMS_BatteryState",
+        "SignalName": "",
+        "DebounceTime": 4000,
+        "RecoveryTime": 2000,
+        "DTC_Number": "0xFFFFFF"
+    },
+    {
+        "FaultType": "SIGNAL",
+        "MessageName": "BMS_BatteryState",
+        "SignalName": "Pack_Voltage",
+        "DebounceTime": 4000,
+        "RecoveryTime": 2000,
+        "DTC_Number": "0XFFFFFF"
+    },
+    {
+        "FaultType": "SIGNAL",
+        "MessageName": "BMS_BatteryState",
+        "SignalName": "Pack_Current",
+        "DebounceTime": 4000,
+        "RecoveryTime": 2000,
+        "DTC_Number": "0XFFFFFF"
+    },
+    {
+        "FaultType": "SIGNAL",
+        "MessageName": "BMS_BatteryState",
+        "SignalName": "Battery_SOC",
+        "DebounceTime": 4000,
+        "RecoveryTime": 2000,
+        "DTC_Number": "0XFFFFFF"
+    },
+    {
+        "FaultType": "TIMEOUT",
+        "MessageName": "TCU_GearStatus",
+        "SignalName": "",
+        "DebounceTime": 4000,
+        "RecoveryTime": 2000,
+        "DTC_Number": "0xFFFFFF"
+    },
+    {
+        "FaultType": "E2E_CRC",
+        "MessageName": "TCU_GearStatus",
+        "SignalName": "",
+        "DebounceTime": 4000,
+        "RecoveryTime": 2000,
+        "DTC_Number": "0xFFFFFF"
+    },
+    {
+        "FaultType": "E2E_SQC",
+        "MessageName": "TCU_GearStatus",
+        "SignalName": "",
+        "DebounceTime": 4000,
+        "RecoveryTime": 2000,
+        "DTC_Number": "0xFFFFFF"
+    },
+    {
+        "FaultType": "E2E_DLC",
+        "MessageName": "TCU_GearStatus",
+        "SignalName": "",
+        "DebounceTime": 4000,
+        "RecoveryTime": 2000,
+        "DTC_Number": "0xFFFFFF"
+    },
+    {
+        "FaultType": "SIGNAL",
+        "MessageName": "TCU_GearStatus",
+        "SignalName": "Current_Gear",
+        "DebounceTime": 4000,
+        "RecoveryTime": 2000,
+        "DTC_Number": "0XFFFFFF"
+    },
+    {
+        "FaultType": "SIGNAL",
+        "MessageName": "TCU_GearStatus",
+        "SignalName": "Transmission_Temp",
+        "DebounceTime": 4000,
+        "RecoveryTime": 2000,
+        "DTC_Number": "0XFFFFFF"
+    },
+    {
+        "FaultType": "GLOBAL_TIMEOUT",
+        "MessageName": "",
+        "SignalName": "",
+        "DebounceTime": 4000,
+        "RecoveryTime": 2000,
+        "DTC_Number": "0XFFFFFF"
+    }
+]
