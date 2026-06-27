@@ -1,6 +1,6 @@
 # Automated CAPL Test Generator using Python 🚗⚡
 
-An automation framework written in Python to parse Controller Area Network database files (`.dbc`, `.arxml`) and automatically generate comprehensive CAPL (`.can`) and test inclusion (`.cin`) modules for automated Hardware-in-the-Loop (HIL) and sil validation setups using Vector CANoe.
+An automation framework written in Python to parse vehicle communication database files (`.dbc`, `.arxml`) and automatically generate comprehensive CAPL (`.can`) and test inclusion (`.cin`) modules for automated Hardware-in-the-Loop (HIL) and sil validation setups using Vector CANoe.
 
 ## 🌟 Key Features & Test Coverage
 
